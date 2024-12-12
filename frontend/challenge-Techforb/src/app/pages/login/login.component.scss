@@ -1,30 +1,30 @@
-.img {
-object-fit: cover;
-height: 100vh;
-width: 55%;
-}
-
-.img-duetone{
-  background: linear-gradient(#33A3AA,#107076);
-  height: 100vh;
-  width: 55%;
-  position: absolute;
-  opacity: 85%;
-}
-
 .container {
   display: flex;
   position: relative;
+  width: 100vw;
+
+  &__bg{
+    background: linear-gradient(#33A3AA,#107076);
+    height: 100vh;
+    width: 55%;
+    position: absolute;
+    opacity: 85%;
+  }
+
+  &__left{
+    height: 100vh;
+    width: 55%;
+    background-image: url('/assets/loginImage.png');
+  }
+
+  &__right{
+    display: flex;
+    width:calc(45% + 32px);
+    border-radius: 32px 0 0 32px;
+    background-color: #FBFCFC;
+    margin-left: -32px;
+    z-index: 10;
+  }
 }
 
-.side{
-  width: 45%;
-  border-radius: 32px 0 0 32px;
-  background-color: #FBFCFC;
-  margin-left: -32px;
-  z-index: 10;
-  font-size: 36.48px;
-  font-weight: 600;
-  line-height: 54.71px;
-  color: #202020;
-}
+

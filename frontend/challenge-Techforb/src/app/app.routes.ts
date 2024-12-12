@@ -8,4 +8,5 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
   },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
