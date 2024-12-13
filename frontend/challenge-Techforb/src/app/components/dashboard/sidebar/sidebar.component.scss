@@ -1,0 +1,21 @@
+.container{
+  position: fixed;
+  width: 80px;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  box-shadow: 3px 0px 5px 0px #0000001A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding-top: 30px;
+
+  .logo{
+    margin-bottom: 30px;
+  }
+
+  .menu{
+    cursor: pointer;
+  }
+}

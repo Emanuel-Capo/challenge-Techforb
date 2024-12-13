@@ -11,7 +11,6 @@
     font-size: 36.48px;
     font-weight: 600;
     line-height: 54.71px;
-    margin: 0;
   }
 
   .subtitle{
@@ -35,14 +34,14 @@
         font-weight: 400;
         line-height: 17px;
         left: 15px;
-        top: -10px;
+        transform: translateY(-50%);
         color: #84818A;
         background-color: #FBFCFC;
         padding: 0 8px;
       }
 
       &__input{
-        width: 370px;
+        width: 400px;
         height: 48px;
         border: 1px solid #DCDBDD;
         border-radius: 12px;
@@ -57,14 +56,15 @@
         right: 20px;
         transform: translateY(50%);
         bottom: 50%;
+        cursor: pointer;
       }
-
     }
 
     .flex{
       width: 100%;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     .text{
@@ -72,6 +72,7 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 21px;
+      cursor: pointer;
     }
 
     .button{
@@ -85,8 +86,8 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;
+      cursor: pointer;
     }
-
   }
 
   .footer{
@@ -94,6 +95,7 @@
     font-weight: 400;
     line-height: 17px;
     color: #84818A;
+    margin: 1rem 0;
 
     span{
       color: #33A3AA;

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="contain">
+    <div class="contain__info">
+      <h4 class="title">{{ data().title }}</h4>
+      <div class="info">
+        @if (data().value) {
+          <p class="info__value">{{data().value}}</p>
+        }
+        @if (data().info) {
+          <div class="info__array">
+            <div class="data">
+              <img
+                src="/assets/icons/checkIcon.svg"
+                alt=""
+                class="data__icon" />
+              <p class="data__text">{{data().info?.ok}}</p>
+            </div>
+            <div class="data">
+              <img
+                src="/assets/icons/midIcon.svg"
+                alt=""
+                class="data__icon" />
+              <p class="data__text">{{data().info?.mid}}</p>
+            </div>
+            <div class="data">
+              <img
+                src="/assets/icons/redIcon.svg"
+                alt=""
+                class="data__icon" />
+              <p class="data__text">{{data().info?.red}}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+    <img [src]="data().mainIcon" alt="" class="contain__icon" />
+  </div>
+</div>

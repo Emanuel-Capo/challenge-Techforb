@@ -1,1 +1,27 @@
-<p>dashboard works!</p>
+<div class="container">
+  <app-sidebar/>
+  <div class="main">
+    <div class="head">
+      <h3 class="head__title">Monitoreo global</h3>
+      <div class="head__user">
+        <img src="/assets/icons/languageIcon.svg" alt="">
+        <img src="/assets/icons/configIcon.svg" alt="">
+        <img src="/assets/icons/notificationIcon.svg" alt="">
+        <p>Juan Rojas</p>
+      </div>
+    </div>
+    <div class="cards">
+      @for (data of dataCardMain; track $index) {
+        <app-card [data]="data" />
+      }
+    </div>
+    <div class="table">
+      <app-table/>
+    </div>
+    <div class="cards">
+      @for (data of dataCardInfo; track $index) {
+        <app-card [data]="data" />
+      }
+    </div>
+  </div>
+</div>
