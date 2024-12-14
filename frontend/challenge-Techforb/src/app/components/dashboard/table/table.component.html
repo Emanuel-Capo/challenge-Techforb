@@ -1,9 +1,9 @@
 <div class="container">
   <div class="flex">
     <h4 class="title">Plantas</h4>
-    <button class="button">+ Crear nueva planta</button>
+    <button class="button" (click)="handleModal()">+ Crear nueva planta</button>
   </div>
-  <hr>
+  <hr />
   <table class="table">
     <thead class="table__head">
       <tr>
@@ -22,7 +22,9 @@
         <td>300</td>
         <td>10</td>
         <td>2</td>
-        <td class="actions"><img src="/assets/icons/actionIcon.svg" alt=""></td>
+        <td class="actions">
+          <img src="/assets/icons/actionIcon.svg" alt="" />
+        </td>
       </tr>
       <tr>
         <td>Argentina</td>
@@ -30,7 +32,9 @@
         <td>300</td>
         <td>10</td>
         <td>2</td>
-        <td class="actions"><img src="/assets/icons/actionIcon.svg" alt=""></td>
+        <td class="actions">
+          <img src="/assets/icons/actionIcon.svg" alt="" />
+        </td>
       </tr>
       <tr>
         <td>Argentina</td>
@@ -38,7 +42,9 @@
         <td>300</td>
         <td>10</td>
         <td>2</td>
-        <td class="actions"><img src="/assets/icons/actionIcon.svg" alt=""></td>
+        <td class="actions">
+          <img src="/assets/icons/actionIcon.svg" alt="" />
+        </td>
       </tr>
       <tr>
         <td>Argentina</td>
@@ -46,7 +52,9 @@
         <td>300</td>
         <td>10</td>
         <td>2</td>
-        <td class="actions"><img src="/assets/icons/actionIcon.svg" alt=""></td>
+        <td class="actions">
+          <img src="/assets/icons/actionIcon.svg" alt="" />
+        </td>
       </tr>
       <tr>
         <td>Argentina</td>
@@ -54,8 +62,13 @@
         <td>300</td>
         <td>10</td>
         <td>2</td>
-        <td class="actions"><img src="/assets/icons/actionIcon.svg" alt=""></td>
+        <td class="actions">
+          <img src="/assets/icons/actionIcon.svg" alt="" />
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
+@if (openModal()) {
+  <app-modal [handleModal]="openModal" />
+}
