@@ -1,13 +1,13 @@
 <div class="container">
-  <app-sidebar/>
+  <app-sidebar />
   <div class="main">
     <div class="head">
       <h3 class="head__title">Monitoreo global</h3>
       <div class="head__user">
-        <img src="/assets/icons/languageIcon.svg" alt="">
-        <img src="/assets/icons/configIcon.svg" alt="">
-        <img src="/assets/icons/notificationIcon.svg" alt="">
-        <p>Juan Rojas</p>
+        <img src="/assets/icons/languageIcon.svg" alt="" />
+        <img src="/assets/icons/configIcon.svg" alt="" />
+        <img src="/assets/icons/notificationIcon.svg" alt="" />
+        <p>{{ userName }}</p>
       </div>
     </div>
     <div class="cards">
@@ -16,7 +16,7 @@
       }
     </div>
     <div class="table">
-      <app-table/>
+      <app-table />
     </div>
     <div class="cards">
       @for (data of dataCardInfo; track $index) {

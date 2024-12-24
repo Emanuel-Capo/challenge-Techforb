@@ -1,0 +1,43 @@
+<td>
+  <img
+    class="flag"
+    src="{{ 'https://flagcdn.com/w40/' + data().countryCode + '.png' }}"
+    width="18"
+    height="12"
+    [alt]="data().country" />
+  {{ data().country }}
+</td>
+<td>{{ data().plant }}</td>
+<td>{{ data().readings }}</td>
+<td>{{ data().midAlerts }}</td>
+<td>{{ data().redAlerts }}</td>
+<td class="actions">
+  <img
+    class="icon"
+    src="/assets/icons/actionIcon.svg"
+    alt=""
+    #toggleButton
+    (click)="toggleMenu()" />
+  @if (isMenuOpen) {
+    <div class="actions__options" #menu>
+      <app-button
+        children="Editar"
+        size="small"
+        color="primary"
+        [action]="handleModalEdit" />
+      <app-button
+        children="Eliminar"
+        size="small"
+        color="secondary"
+        [action]="handleModalDelete" />
+    </div>
+  }
+</td>
+@if (openModalEdit) {
+  <app-edit-modal [closeModal]="handleModalEdit" [editData]="data()" />
+}
+@if (openModalDelete) {
+  <app-delete-modal
+    [closeModal]="handleModalDelete"
+    [deleteData]="deleteData!" />
+}

@@ -1,0 +1,74 @@
+<dialog class="container">
+  <div class="modal">
+    <h3 class="modal__title">Editar planta</h3>
+    <form class="form" [formGroup]="editFormgroup" (ngSubmit)="handleEdit()">
+      <div class="flex">
+        <div>
+          <label class="form__label">Nombre planta</label>
+          <input
+            class="form__input"
+            type="text"
+            [value]="editData().plant"
+            disabled />
+        </div>
+        <div>
+          <label class="form__label">País</label>
+          <input
+            class="form__input"
+            type="text"
+            disabled
+            [value]="editData().country" />
+        </div>
+      </div>
+      <div class="flex">
+        <div>
+          <label class="form__label">Cantidad de lecturas</label>
+          <input
+            class="form__input"
+            type="number"
+            placeholder="Ingrese"
+            formControlName="readings" />
+        </div>
+        <div>
+          <label class="form__label">Sensores deshabilitados</label>
+          <input
+            class="form__input"
+            type="number"
+            placeholder="Ingrese"
+            formControlName="disabled" />
+        </div>
+      </div>
+      <div class="flex">
+        <div>
+          <label class="form__label">Alertas medias</label>
+          <input
+            class="form__input"
+            type="number"
+            placeholder="Ingrese"
+            formControlName="midAlerts" />
+        </div>
+        <div>
+          <label class="form__label">Alrtas rojas</label>
+          <input
+            class="form__input"
+            type="number"
+            placeholder="Ingrese"
+            formControlName="redAlerts" />
+        </div>
+      </div>
+      <div class="form__buttons">
+        <app-button
+          children="Cancelar"
+          size="small"
+          color="secondary"
+          type="button"
+          [action]="closeModal" />
+        <app-button
+          children="Editar"
+          size="small"
+          color="primary"
+          [isLoading]="isLoading" />
+      </div>
+    </form>
+  </div>
+</dialog>

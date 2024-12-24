@@ -1,25 +1,20 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
-import { ButtonComponent } from '../../common/button/button.component';
+import { ButtonComponent } from "../common/button/button.component";
+import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonComponent, RouterLink, NgClass],
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.scss',
+  imports: [ButtonComponent, ReactiveFormsModule, RouterLink],
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss'
 })
-export class LoginFormComponent implements OnInit {
-  private readonly _formBuilder = inject(NonNullableFormBuilder);
+export class RegisterComponent implements OnInit {
+private readonly _formBuilder = inject(NonNullableFormBuilder);
   private readonly _authService = inject(AuthService);
   private readonly _cookies = inject(CookieService);
   private readonly _router = inject(Router);
@@ -36,25 +31,28 @@ export class LoginFormComponent implements OnInit {
 
   formgroup = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")]],
+    firstname: ['', [Validators.required]],
+    lastname: ['', [Validators.required]],
+    password: ['', [Validators.required]],
   });
 
-  handleLogin = () => {
+  handleRegister = () => {
     this.isLoading = true;
-    const loginData = this.formgroup.getRawValue();
+    const registerData = this.formgroup.getRawValue();
     this._authService
-      .Login(loginData)
+      .Register(registerData)
       .subscribe({
         next: ({ token, fullName }) => {
           this._cookies.set('token', token);
           this._cookies.set('fullname', fullName);
           this._router.navigateByUrl('/dashboard');
-          this._toast.success('Sesión iniciada correctamente');
+          this._toast.success('Usuario registrado correctamente');
         },
         error: () => {
-          this._toast.error('Email y/o contraseña incorrectos');
+          this._toast.error('Ha ocurrido un error');
         },
       })
       .add(() => (this.isLoading = false));
   };
+
 }

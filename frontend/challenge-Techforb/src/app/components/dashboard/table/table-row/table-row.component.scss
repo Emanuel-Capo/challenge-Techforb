@@ -1,0 +1,36 @@
+
+.actions{
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+
+  &__options{
+    position: absolute;
+    z-index: 10;
+    padding: 10px;
+    border: 1px solid #B0CAD1;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    top: 40px;
+    transform: translateX(-40%);
+    cursor:initial;
+  }
+
+  .icon{
+    height: 100%;
+    width: 100%;
+    padding: 18.5px;
+  }
+}
+
+.flag{
+  border-radius: 2px;
+  margin-right: 6px;
+}
+

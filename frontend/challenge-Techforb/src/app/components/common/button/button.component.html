@@ -1,0 +1,17 @@
+<button
+  class="btn"
+  [ngClass]="{
+    'btn-large': size() === 'large',
+    'btn-small': size() === 'small',
+    'btn-primary': color() === 'primary',
+    'btn-secondary': color() === 'secondary',
+    'btn-disabled': disabled()
+  }"
+  [type]="type()"
+  (click)="action()"
+  [disabled]="disabled()">
+  {{ children() }}
+  @if (isLoading()) {
+    <span class="loader"></span>
+  }
+</button>

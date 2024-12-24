@@ -10,8 +10,8 @@
   top: 0;
 
   .modal{
-    width: 380px;
-    height: 290px;
+    width: 720px;
+    height: 360px;
     border-radius: 15px;
     background-color: #FFFFFF;
     font-size: 14px;
@@ -49,17 +49,6 @@
 
       }
 
-      .rel{
-        position: relative;
-      }
-
-      .arrow{
-        position: absolute;
-        right: 20px;
-        top: 40%;
-        pointer-events: none;
-      }
-
       &__buttons{
         display: flex;
         justify-content: center;
@@ -68,5 +57,9 @@
       }
     }
   }
-}
 
+  .flex{
+    display: flex;
+    gap: 20px;
+  }
+}

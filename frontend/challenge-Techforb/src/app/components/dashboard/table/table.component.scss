@@ -37,6 +37,7 @@
   .table{
     width: 100%;
     text-align: left;
+    border-collapse: collapse;
 
     &__head{
       font-size: 14px;
@@ -56,14 +57,40 @@
 
       tr{
         height: 50px;
+
+        &:hover{
+          background-color: #E9F1F4;
+        }
       }
     }
 
-    .actions{
-      display: flex;
-      justify-content: center;
-      cursor: pointer;
-    }
   }
 }
 
+.actions{
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 80px;
+  height: 80px;
+  border: 5px solid #33A3AA;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  margin: 50px auto;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  }

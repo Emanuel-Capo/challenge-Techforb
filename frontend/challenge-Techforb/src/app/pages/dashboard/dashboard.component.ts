@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   CardComponent,
   CardData,
 } from '../../components/dashboard/card/card.component';
-import { TableComponent } from "../../components/dashboard/table/table.component";
-import { SidebarComponent } from "../../components/dashboard/sidebar/sidebar.component";
+import { TableComponent } from '../../components/dashboard/table/table.component';
+import { SidebarComponent } from '../../components/dashboard/sidebar/sidebar.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,14 @@ import { SidebarComponent } from "../../components/dashboard/sidebar/sidebar.com
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  private readonly _cookies = inject(CookieService);
+  userName = '';
+
+  ngOnInit(): void {
+    this.userName = this._cookies.get('fullname');
+  }
+
   dataCardMain: CardData[] = [
     {
       title: 'Lecturas Ok',
@@ -46,81 +54,81 @@ export class DashboardComponent {
       title: 'Temperatura',
       mainIcon: '/assets/icons/temperatureIcon.svg',
       size: 'small',
-      info:{
-        ok:123,
-        mid:456,
-        red:789
-      }
+      info: {
+        ok: 123,
+        mid: 456,
+        red: 789,
+      },
     },
     {
       title: 'Presion',
       mainIcon: '/assets/icons/presureIcon.svg',
       size: 'small',
-      info:{
-        ok:123,
-        mid:456,
-        red:789
-      }
+      info: {
+        ok: 123,
+        mid: 456,
+        red: 789,
+      },
     },
     {
       title: 'Viento',
       mainIcon: '/assets/icons/windIcon.svg',
       size: 'small',
-      info:{
-        ok:123,
-        mid:456,
-        red:789
-      }
+      info: {
+        ok: 123,
+        mid: 456,
+        red: 789,
+      },
     },
     {
       title: 'Niveles',
       mainIcon: '/assets/icons/levelIcon.svg',
       size: 'small',
-      info:{
-        ok:123,
-        mid:456,
-        red:789
-      }
+      info: {
+        ok: 123,
+        mid: 456,
+        red: 789,
+      },
     },
     {
       title: 'Energía',
       mainIcon: '/assets/icons/energyIcon.svg',
       size: 'small',
-      info:{
-        ok:123,
-        mid:456,
-        red:789
-      }
+      info: {
+        ok: 123,
+        mid: 456,
+        red: 789,
+      },
     },
     {
       title: 'Tensión',
       mainIcon: '/assets/icons/tensionIcon.svg',
       size: 'small',
-      info:{
-        ok:123,
-        mid:456,
-        red:789
-      }
+      info: {
+        ok: 123,
+        mid: 456,
+        red: 789,
+      },
     },
     {
       title: 'Monóxido de carbono',
       mainIcon: '/assets/icons/COIcon.svg',
       size: 'small',
-      info:{
-        ok:123,
-        mid:456,
-        red:789
-      }
+      info: {
+        ok: 123,
+        mid: 456,
+        red: 789,
+      },
     },
     {
       title: 'Otros gases',
       mainIcon: '/assets/icons/gasIcon.svg',
       size: 'small',
-      info:{
-        ok:123,
-        mid:456,
-        red:789
-      }
+      info: {
+        ok: 123,
+        mid: 456,
+        red: 789,
+      },
     },
   ];
 }

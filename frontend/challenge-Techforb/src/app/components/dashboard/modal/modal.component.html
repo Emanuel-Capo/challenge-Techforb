@@ -1,81 +1,41 @@
 <dialog class="container">
-  @if (type() === 'create') {
-    <div class="modal">
-      <h3 class="modal__title">Crear nueva planta</h3>
-      <form class="form">
-        <label class="form__label">Nombre planta</label>
-        <input class="form__input" type="text" placeholder="Ingrese nombre" />
-        <label class="form__label">País</label>
-        <div class="rel">
-          <select class="form__input" id="">
-            <option value="value1" selected disabled hidden>
-              Seleccione país
-            </option>
-            <option value="value2">Value 2</option>
-            <option value="value3">Value 3</option>
-          </select>
-          <img class="arrow" src="/assets/icons/selectIcon.svg" alt="" />
-        </div>
-        <div class="form__buttons">
-          <button
-            class="button btnClose"
-            (click)="handleModal()?.set(false)"
-            type="button">
-            Cancelar
-          </button>
-          <button class="button btnSubmit" type="submit">Crear</button>
-        </div>
-      </form>
-    </div>
-  }
-  @if (type() === 'edit') {
-    <div class="modal edit">
-      <h3 class="modal__title">Editar planta</h3>
-      <form class="form">
-        <div class="flex">
-          <div>
-            <label class="form__label">Nombre planta</label>
-            <input class="form__input" type="text" disabled />
-          </div>
-          <div>
-            <label class="form__label">País</label>
-            <input
-              class="form__input"
-              type="text"
-              placeholder="Ingrese"
-              disabled />
-          </div>
-        </div>
-        <div class="flex">
-          <div>
-            <label class="form__label">Cantidad de lecturas</label>
-            <input class="form__input" type="text" placeholder="Ingrese" />
-          </div>
-          <div>
-            <label class="form__label">Cantidad de lecturas</label>
-            <input class="form__input" type="text" placeholder="Ingrese" />
-          </div>
-        </div>
-        <div class="flex">
-          <div>
-            <label class="form__label">Alertas medias</label>
-            <input class="form__input" type="text" placeholder="Ingrese" />
-          </div>
-          <div>
-            <label class="form__label">Alrtas rojas</label>
-            <input class="form__input" type="text" placeholder="Ingrese" />
-          </div>
-        </div>
-        <div class="form__buttons">
-          <button
-            class="button btnClose"
-            (click)="handleModal()?.set(false)"
-            type="button">
-            Cancelar
-          </button>
-          <button class="button btnSubmit" type="submit">Crear</button>
-        </div>
-      </form>
-    </div>
-  }
+  <div class="modal">
+    <h3 class="modal__title">Crear nueva planta</h3>
+    <form
+      class="form"
+      [formGroup]="createFormgroup"
+      (ngSubmit)="handleCreate()">
+      <label class="form__label">Nombre planta</label>
+      <input
+        class="form__input"
+        type="text"
+        placeholder="Ingrese nombre"
+        formControlName="plant" />
+      <label class="form__label">País</label>
+      <div class="rel">
+        <select class="form__input" id="" formControlName="country">
+          <option value="value1" selected disabled hidden>
+            Seleccione país
+          </option>
+          @for (c of countryName; track $index; let i = $index) {
+            <option [value]="i">{{ c }}</option>
+          }
+        </select>
+        <img class="arrow" src="/assets/icons/selectIcon.svg" alt="" />
+      </div>
+      <div class="form__buttons">
+        <app-button
+          children="Cancelar"
+          size="small"
+          color="secondary"
+          type="button"
+          [action]="closeModal" />
+        <app-button
+          children="Crear"
+          size="small"
+          color="primary"
+          [isLoading]="isLoading" />
+      </div>
+    </form>
+  </div>
 </dialog>

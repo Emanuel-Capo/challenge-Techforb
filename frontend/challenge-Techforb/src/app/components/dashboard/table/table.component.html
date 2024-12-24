@@ -1,7 +1,9 @@
 <div class="container">
   <div class="flex">
     <h4 class="title">Plantas</h4>
-    <button class="button" (click)="handleModal()">+ Crear nueva planta</button>
+    <button class="button" (click)="handleOpenModal()">
+      + Crear nueva planta
+    </button>
   </div>
   <hr />
   <table class="table">
@@ -15,60 +17,18 @@
         <th class="actions">Acciones</th>
       </tr>
     </thead>
-    <tbody class="table__body">
-      <tr>
-        <td>Argentina</td>
-        <td>Quilmes</td>
-        <td>300</td>
-        <td>10</td>
-        <td>2</td>
-        <td class="actions">
-          <img src="/assets/icons/actionIcon.svg" alt="" />
-        </td>
-      </tr>
-      <tr>
-        <td>Argentina</td>
-        <td>Quilmes</td>
-        <td>300</td>
-        <td>10</td>
-        <td>2</td>
-        <td class="actions">
-          <img src="/assets/icons/actionIcon.svg" alt="" />
-        </td>
-      </tr>
-      <tr>
-        <td>Argentina</td>
-        <td>Quilmes</td>
-        <td>300</td>
-        <td>10</td>
-        <td>2</td>
-        <td class="actions">
-          <img src="/assets/icons/actionIcon.svg" alt="" />
-        </td>
-      </tr>
-      <tr>
-        <td>Argentina</td>
-        <td>Quilmes</td>
-        <td>300</td>
-        <td>10</td>
-        <td>2</td>
-        <td class="actions">
-          <img src="/assets/icons/actionIcon.svg" alt="" />
-        </td>
-      </tr>
-      <tr>
-        <td>Argentina</td>
-        <td>Quilmes</td>
-        <td>300</td>
-        <td>10</td>
-        <td>2</td>
-        <td class="actions">
-          <img src="/assets/icons/actionIcon.svg" alt="" />
-        </td>
-      </tr>
-    </tbody>
+    @if (!isLoading) {
+      <tbody class="table__body">
+        @for (plant of plantsData; track plant.id) {
+          <tr app-table-row [data]="plant"></tr>
+        }
+      </tbody>
+    }
   </table>
+  @if (isLoading) {
+    <span class="loader"></span>
+  }
 </div>
-@if (openModal()) {
-  <app-modal [handleModal]="openModal" />
+@if (openModal) {
+  <app-modal [closeModal]="handleCloseModal" />
 }

@@ -1,21 +1,15 @@
 <div class="container">
-  <p class="title">Portal de monitoreo</p>
-  <p class="subtitle">Iniciar sesión</p>
+  <p class="subtitle">Registro</p>
   <form
     action=""
     class="form"
     [formGroup]="formgroup"
-    (ngSubmit)="handleLogin()">
+    (ngSubmit)="handleRegister()">
     <div class="input">
       <label for="mail" class="input__label">Email </label>
       <input
         id="mail"
         class="input__input"
-        [ngClass]="{
-          error:
-            formgroup.controls.email.invalid &&
-            formgroup.controls.email.touched,
-        }"
         type="email"
         name="mail"
         placeholder="Luciano@email.com"
@@ -33,20 +27,13 @@
         formControlName="password" />
     </div>
     <div class="flex">
-      <a routerLink="/register" class="text"
-        >¿No tienes cuenta? <br /><span> Registrarse</span>
-      </a>
+      <a routerLink="/login" class="text">¿Ya tienes cuenta? <br><span> Iniciar sesión</span> </a>
 
       <app-button
-        children="Iniciar sesión"
+        children="Registrar cuenta"
         size="large"
         color="primary"
-        [disabled]="formgroup.invalid"
         [isLoading]="isLoading" />
     </div>
   </form>
-  <p class="footer">
-    Protegido por reCAPTCHA y sujeto a la <span>Política de Privacidad</span> y
-    <span>Condiciones.</span>
-  </p>
 </div>
