@@ -16,11 +16,5 @@ public class ReadingDataCreateDTO {
   @NotBlank
   private String plant;
   @NotBlank
-  private Integer readings;
-  @NotBlank
-  private Integer midAlerts;
-  @NotBlank
-  private Integer redAlerts;
-  @NotBlank
-  private Integer disabled;
+  private String countryCode;
 }

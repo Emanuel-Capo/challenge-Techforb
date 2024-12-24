@@ -15,6 +15,7 @@ public class ReadingData {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String country;
+  private String countryCode;
   private String plant;
   private Integer readings;
   private Integer midAlerts;

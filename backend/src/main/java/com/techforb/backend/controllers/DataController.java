@@ -3,6 +3,7 @@ package com.techforb.backend.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.techforb.backend.models.ReadingData;
 import com.techforb.backend.models.DTOs.ReadingDataCreateDTO;
 import com.techforb.backend.models.DTOs.ReadingDataEditDTO;
+import com.techforb.backend.models.DTOs.TotalReadings;
 import com.techforb.backend.services.IDataService;
 
 import jakarta.validation.Valid;
@@ -56,4 +58,15 @@ public class DataController {
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 
+  @GetMapping("/total")
+  public ResponseEntity<TotalReadings> getTotal() {
+    TotalReadings dataGet = _dataService.getTotals();
+    return new ResponseEntity<>(dataGet, HttpStatus.OK);
+  }
+
+  @GetMapping("/pages/{page}")
+  public ResponseEntity<Page<ReadingData>> getAllWithPages(@PathVariable Integer page) {
+    Page<ReadingData> dataGet = _dataService.getAllWithPages(page);
+    return new ResponseEntity<>(dataGet, HttpStatus.OK);
+  }
 }

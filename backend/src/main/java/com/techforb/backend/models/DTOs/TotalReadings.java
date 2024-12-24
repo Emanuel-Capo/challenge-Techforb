@@ -1,16 +1,12 @@
 package com.techforb.backend.models.DTOs;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ReadingDataEditDTO {
-  private Integer id;
+public class TotalReadings {
   private Integer readings;
   private Integer midAlerts;
   private Integer redAlerts;
