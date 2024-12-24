@@ -7,7 +7,16 @@
     [formGroup]="formgroup"
     (ngSubmit)="handleLogin()">
     <div class="input">
-      <label for="mail" class="input__label">Email </label>
+      <label
+        for="mail"
+        class="input__label"
+        [ngClass]="{
+          error:
+            formgroup.controls.email.invalid &&
+            formgroup.controls.email.touched,
+        }"
+        >Email
+      </label>
       <input
         id="mail"
         class="input__input"
@@ -20,17 +29,49 @@
         name="mail"
         placeholder="Luciano@email.com"
         formControlName="email" />
+      @if (
+        formgroup.controls.email.hasError('email') &&
+        formgroup.controls.email.touched
+      ) {
+        <span class="message">Formato de email incorrecto</span>
+      }
     </div>
     <div class="input">
-      <label for="password" class="input__label">Contaseña </label>
-      <img src="/assets/icons/eyeIcon.svg" alt="" class="input__eye" />
+      <label
+        for="password"
+        class="input__label"
+        [ngClass]="{
+          error:
+            formgroup.controls.password.invalid &&
+            formgroup.controls.password.touched,
+        }"
+        >Contaseña
+      </label>
+      <img
+        src="/assets/icons/eyeIcon.svg"
+        alt=""
+        class="input__eye"
+        (click)="changeType()" />
       <input
         id="password"
         class="input__input"
-        type="password"
+        [ngClass]="{
+          error:
+            formgroup.controls.password.invalid &&
+            formgroup.controls.password.touched,
+        }"
+        [type]="inputType"
         name="password"
         placeholder="Contraseña"
         formControlName="password" />
+      @if (
+        formgroup.controls.password.hasError('pattern') &&
+        formgroup.controls.password.touched
+      ) {
+        <span class="message"
+          >Al menos 8 caracteres con letra, número y caracter especial</span
+        >
+      }
     </div>
     <div class="flex">
       <a routerLink="/register" class="text"

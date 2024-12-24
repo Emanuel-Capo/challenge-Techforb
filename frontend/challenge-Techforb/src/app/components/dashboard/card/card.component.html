@@ -3,8 +3,12 @@
     <div class="contain__info">
       <h4 class="title">{{ data().title }}</h4>
       <div class="info">
-        @if (data().value) {
-          <p class="info__value">{{data().value}}</p>
+        @if (isLoading()) {
+          <span class="loader"></span>
+        } @else {
+          @if (value()) {
+            <p class="info__value">{{ value() }}</p>
+          }
         }
         @if (data().info) {
           <div class="info__array">
@@ -13,21 +17,15 @@
                 src="/assets/icons/checkIcon.svg"
                 alt=""
                 class="data__icon" />
-              <p class="data__text">{{data().info?.ok}}</p>
+              <p class="data__text">{{ data().info?.ok }}</p>
             </div>
             <div class="data">
-              <img
-                src="/assets/icons/midIcon.svg"
-                alt=""
-                class="data__icon" />
-              <p class="data__text">{{data().info?.mid}}</p>
+              <img src="/assets/icons/midIcon.svg" alt="" class="data__icon" />
+              <p class="data__text">{{ data().info?.mid }}</p>
             </div>
             <div class="data">
-              <img
-                src="/assets/icons/redIcon.svg"
-                alt=""
-                class="data__icon" />
-              <p class="data__text">{{data().info?.red}}</p>
+              <img src="/assets/icons/redIcon.svg" alt="" class="data__icon" />
+              <p class="data__text">{{ data().info?.red }}</p>
             </div>
           </div>
         }

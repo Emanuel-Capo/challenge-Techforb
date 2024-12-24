@@ -36,7 +36,15 @@ export class LoginFormComponent implements OnInit {
 
   formgroup = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")]],
+    password: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(
+          '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$'
+        ),
+      ],
+    ],
   });
 
   handleLogin = () => {
@@ -56,5 +64,12 @@ export class LoginFormComponent implements OnInit {
         },
       })
       .add(() => (this.isLoading = false));
+  };
+
+  inputType: 'password' | 'text' = 'password';
+
+  changeType = () => {
+    if (this.inputType === 'password') this.inputType = 'text';
+    else this.inputType = 'password';
   };
 }

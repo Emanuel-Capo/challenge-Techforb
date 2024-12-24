@@ -6,11 +6,24 @@
       [formGroup]="createFormgroup"
       (ngSubmit)="handleCreate()">
       <label class="form__label">Nombre planta</label>
-      <input
-        class="form__input"
-        type="text"
-        placeholder="Ingrese nombre"
-        formControlName="plant" />
+      <div class="relative">
+        <input
+          class="form__input"
+          type="text"
+          placeholder="Ingrese nombre"
+          formControlName="plant"
+          [ngClass]="{
+            error:
+              createFormgroup.controls.plant.invalid &&
+              createFormgroup.controls.plant.touched,
+          }" />
+        @if (
+          createFormgroup.controls.plant.hasError('minlength') &&
+          createFormgroup.controls.plant.touched
+        ) {
+          <span class="message">3 caracteres como mínimo</span>
+        }
+      </div>
       <label class="form__label">País</label>
       <div class="rel">
         <select class="form__input" id="" formControlName="country">
@@ -34,7 +47,8 @@
           children="Crear"
           size="small"
           color="primary"
-          [isLoading]="isLoading" />
+          [isLoading]="isLoading"
+          [disabled]="createFormgroup.invalid" />
       </div>
     </form>
   </div>

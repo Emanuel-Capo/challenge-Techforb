@@ -2,6 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, inject, Injectable, Output } from '@angular/core';
 import { environment } from '../../environments/environment';
 
+export interface PagePlantData {
+  content: PlantData[];
+  totalPages: number;
+  totalElements: number;
+  last: boolean;
+  number: number;
+  first: boolean;
+}
+
 export interface PlantData {
   id: number;
   country: string;
@@ -15,6 +24,13 @@ export interface PlantData {
 
 export interface EditData {
   id: number;
+  readings: number;
+  midAlerts: number;
+  redAlerts: number;
+  disabled: number;
+}
+
+export interface TotalData {
   readings: number;
   midAlerts: number;
   redAlerts: number;
@@ -45,8 +61,12 @@ export class DataService {
     return this._http.post(this._baseUrl, data);
   };
 
-  GetPlants = () => {
-    return this._http.get<PlantData[]>(this._baseUrl);
+  // GetPlants = () => {
+  //   return this._http.get<PlantData[]>(this._baseUrl);
+  // };
+
+  GetAllWithPages = (page: number) => {
+    return this._http.get<PagePlantData>(`${this._baseUrl}/pages/${page}`);
   };
 
   EditPlant = (data: EditData) => {
@@ -55,5 +75,9 @@ export class DataService {
 
   DeletePlant = (id: number) => {
     return this._http.delete(`${this._baseUrl}/${id}`);
+  };
+
+  GetTotals = () => {
+    return this._http.get<TotalData>(`${this._baseUrl}/total`);
   };
 }

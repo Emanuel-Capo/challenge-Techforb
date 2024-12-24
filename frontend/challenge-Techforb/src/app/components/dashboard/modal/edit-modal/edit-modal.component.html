@@ -23,37 +23,89 @@
       <div class="flex">
         <div>
           <label class="form__label">Cantidad de lecturas</label>
-          <input
-            class="form__input"
-            type="number"
-            placeholder="Ingrese"
-            formControlName="readings" />
+          <div class="relative">
+            <input
+              class="form__input"
+              type="text"
+              placeholder="Ingrese valor"
+              formControlName="readings"
+              [ngClass]="{
+                error:
+                  editFormgroup.controls.readings.invalid &&
+                  editFormgroup.controls.readings.touched,
+              }" />
+            @if (
+              editFormgroup.controls.readings.hasError('min') &&
+              editFormgroup.controls.readings.touched
+            ) {
+              <span class="message">Debe ser positivo</span>
+            }
+          </div>
         </div>
         <div>
           <label class="form__label">Sensores deshabilitados</label>
-          <input
-            class="form__input"
-            type="number"
-            placeholder="Ingrese"
-            formControlName="disabled" />
+          <div class="relative">
+            <input
+              class="form__input"
+              type="text"
+              placeholder="Ingrese valor"
+              formControlName="disabled"
+              [ngClass]="{
+                error:
+                  editFormgroup.controls.disabled.invalid &&
+                  editFormgroup.controls.disabled.touched,
+              }" />
+            @if (
+              editFormgroup.controls.disabled.hasError('min') &&
+              editFormgroup.controls.disabled.touched
+            ) {
+              <span class="message">Debe ser positivo</span>
+            }
+          </div>
         </div>
       </div>
       <div class="flex">
         <div>
           <label class="form__label">Alertas medias</label>
-          <input
-            class="form__input"
-            type="number"
-            placeholder="Ingrese"
-            formControlName="midAlerts" />
+          <div class="relative">
+            <input
+              class="form__input"
+              type="text"
+              placeholder="Ingrese valor"
+              formControlName="midAlerts"
+              [ngClass]="{
+                error:
+                  editFormgroup.controls.midAlerts.invalid &&
+                  editFormgroup.controls.midAlerts.touched,
+              }" />
+            @if (
+              editFormgroup.controls.midAlerts.hasError('min') &&
+              editFormgroup.controls.midAlerts.touched
+            ) {
+              <span class="message">Debe ser positivo</span>
+            }
+          </div>
         </div>
         <div>
           <label class="form__label">Alrtas rojas</label>
-          <input
-            class="form__input"
-            type="number"
-            placeholder="Ingrese"
-            formControlName="redAlerts" />
+          <div class="relative">
+            <input
+              class="form__input"
+              type="text"
+              placeholder="Ingrese valor"
+              formControlName="redAlerts"
+              [ngClass]="{
+                error:
+                  editFormgroup.controls.redAlerts.invalid &&
+                  editFormgroup.controls.redAlerts.touched,
+              }" />
+            @if (
+              editFormgroup.controls.redAlerts.hasError('min') &&
+              editFormgroup.controls.redAlerts.touched
+            ) {
+              <span class="message">Debe ser positivo</span>
+            }
+          </div>
         </div>
       </div>
       <div class="form__buttons">
@@ -67,7 +119,8 @@
           children="Editar"
           size="small"
           color="primary"
-          [isLoading]="isLoading" />
+          [isLoading]="isLoading"
+          [disabled]="editFormgroup.invalid" />
       </div>
     </form>
   </div>

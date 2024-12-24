@@ -11,11 +11,12 @@ import {
 } from '../../../../services/data.service';
 import { ToastrService } from 'ngx-toastr';
 import { ButtonComponent } from '../../../common/button/button.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-edit-modal',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule],
+  imports: [ButtonComponent, ReactiveFormsModule, NgClass],
   templateUrl: './edit-modal.component.html',
   styleUrl: './edit-modal.component.scss',
 })
@@ -38,10 +39,10 @@ export class EditModalComponent implements OnInit {
   isLoading = false;
 
   editFormgroup = this._formBuilder.group({
-    readings: [0, Validators.min(0)],
-    midAlerts: [0, Validators.min(0)],
-    redAlerts: [0, Validators.min(0)],
-    disabled: [0, Validators.min(0)],
+    readings: [0, [Validators.required, Validators.min(0)]],
+    midAlerts: [0, [Validators.required, Validators.min(0)]],
+    redAlerts: [0, [Validators.required, Validators.min(0)]],
+    disabled: [0, [Validators.required, Validators.min(0)]],
   });
 
   handleEdit = () => {

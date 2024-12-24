@@ -11,11 +11,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule],
+  imports: [ButtonComponent, ReactiveFormsModule, NgClass],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
 })
@@ -41,8 +42,8 @@ export class ModalComponent implements OnInit {
   isLoading = false;
 
   createFormgroup = this._formBuilder.group({
-    plant: ['', [Validators.required, Validators.min(3)]],
-    country: [[Validators.required]],
+    plant: ['', [Validators.required, Validators.minLength(3)]],
+    country: [-1, [Validators.required, Validators.min(0)]],
   });
 
   handleCreate = () => {

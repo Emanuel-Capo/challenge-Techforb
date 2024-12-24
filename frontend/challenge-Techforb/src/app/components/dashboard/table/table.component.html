@@ -25,6 +25,13 @@
       </tbody>
     }
   </table>
+  @if (!isLoading) {
+  <div class="pagination">
+    @if (!firstPage) {<button (click)="previousPage()"><img class="arrowLeft" src="/assets/icons/selectIcon.svg" alt="" /></button>}
+    <span>Página {{currentPage+1}} de {{pages}}</span>
+    @if (!lastPage) {<button (click)="nextPage()"><img class="arrowRight" src="/assets/icons/selectIcon.svg" alt="" /></button>}
+  </div>
+}
   @if (isLoading) {
     <span class="loader"></span>
   }

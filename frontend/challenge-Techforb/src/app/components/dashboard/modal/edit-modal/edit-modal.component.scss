@@ -63,3 +63,29 @@
     gap: 20px;
   }
 }
+
+.error{
+  border-color: #ff6961 !important;
+  color: #ff6961 !important;
+}
+
+.message{
+  color: #ff6961;
+  font-size: 10px;
+    font-weight: 500;
+    line-height: 10px;
+    position: absolute;
+    width: max-content;
+    bottom: 6px;
+    background-color: #FBFCFC;
+    right: 15px;
+    padding: 0 5px;
+}
+
+.relative{
+  position: relative;
+}
+
+*:focus {
+  outline: none;
+}

@@ -3,7 +3,8 @@
   background-color: #fff;
   min-height: 350px;
   border-radius: 15px;
-  padding: 30px 20px;
+  padding: 30px 20px 50px;
+  position: relative;
 
   .flex{
     display: flex;
@@ -94,3 +95,42 @@
       transform: rotate(360deg);
   }
   }
+
+  .pagination{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 5px;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+
+    button{
+      width: 20px;
+      height: 20px;
+      background-color: #FFFFFF;
+  color: #33A3AA;
+  border: 1px solid #33A3AA;
+  border-radius: 4px;
+  cursor: pointer;
+    }
+
+    span{
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+
+    .arrowLeft{
+      transform: rotate(90deg);
+      width: 11px;
+      height: 11px;
+      color: #33A3AA;
+    }
+    .arrowRight{
+      transform: rotate(-90deg);
+      width: 11px;
+      height: 11px;
+    }
+}
+

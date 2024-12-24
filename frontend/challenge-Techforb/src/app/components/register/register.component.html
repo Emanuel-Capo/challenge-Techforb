@@ -6,33 +6,175 @@
     [formGroup]="formgroup"
     (ngSubmit)="handleRegister()">
     <div class="input">
-      <label for="mail" class="input__label">Email </label>
+      <label
+        for="firstname"
+        class="input__label"
+        [ngClass]="{
+          error:
+            formgroup.controls.firstname.invalid &&
+            formgroup.controls.firstname.touched,
+        }"
+        >Nombre
+      </label>
+      <input
+        id="firstname"
+        class="input__input"
+        [ngClass]="{
+          error:
+            formgroup.controls.firstname.invalid &&
+            formgroup.controls.firstname.touched,
+        }"
+        type="text"
+        name="firstname"
+        formControlName="firstname" />
+      @if (
+        formgroup.controls.firstname.hasError('required') &&
+        formgroup.controls.firstname.touched
+      ) {
+        <span class="message">Requerido</span>
+      }
+    </div>
+    <div class="input">
+      <label
+        for="lastname"
+        class="input__label"
+        [ngClass]="{
+          error:
+            formgroup.controls.lastname.invalid &&
+            formgroup.controls.lastname.touched,
+        }"
+        >Apellido
+      </label>
+      <input
+        id="lastname"
+        class="input__input"
+        [ngClass]="{
+          error:
+            formgroup.controls.lastname.invalid &&
+            formgroup.controls.lastname.touched,
+        }"
+        type="text"
+        name="lastname"
+        formControlName="lastname" />
+      @if (
+        formgroup.controls.lastname.hasError('required') &&
+        formgroup.controls.lastname.touched
+      ) {
+        <span class="message">Requerido</span>
+      }
+    </div>
+    <div class="input">
+      <label
+        for="mail"
+        class="input__label"
+        [ngClass]="{
+          error:
+            formgroup.controls.email.invalid &&
+            formgroup.controls.email.touched,
+        }"
+        >Email
+      </label>
       <input
         id="mail"
         class="input__input"
+        [ngClass]="{
+          error:
+            formgroup.controls.email.invalid &&
+            formgroup.controls.email.touched,
+        }"
         type="email"
         name="mail"
         placeholder="Luciano@email.com"
         formControlName="email" />
+      @if (
+        formgroup.controls.email.hasError('email') &&
+        formgroup.controls.email.touched
+      ) {
+        <span class="message">Formato de email incorrecto</span>
+      }
     </div>
     <div class="input">
-      <label for="password" class="input__label">Contaseña </label>
-      <img src="/assets/icons/eyeIcon.svg" alt="" class="input__eye" />
+      <label
+        for="password"
+        class="input__label"
+        [ngClass]="{
+          error:
+            formgroup.controls.password.invalid &&
+            formgroup.controls.password.touched,
+        }"
+        >Contaseña
+      </label>
+      <img
+        src="/assets/icons/eyeIcon.svg"
+        alt=""
+        class="input__eye"
+        (click)="changeType()" />
       <input
         id="password"
         class="input__input"
-        type="password"
+        [ngClass]="{
+          error:
+            formgroup.controls.password.invalid &&
+            formgroup.controls.password.touched,
+        }"
+        [type]="inputType"
         name="password"
         placeholder="Contraseña"
         formControlName="password" />
+      @if (
+        formgroup.controls.password.hasError('pattern') &&
+        formgroup.controls.password.touched
+      ) {
+        <span class="message"
+          >Al menos 8 caracteres con letra, número y caracter especial</span
+        >
+      }
+    </div>
+    <div class="input">
+      <label
+        for="password2"
+        class="input__label"
+        [ngClass]="{
+          error:
+            formgroup.errors?.['PasswordNoMatch'] &&
+            formgroup.controls.confirmPassword.touched,
+        }"
+        >Confirmar contaseña
+      </label>
+      <img
+        src="/assets/icons/eyeIcon.svg"
+        alt=""
+        class="input__eye"
+        (click)="changeType2()" />
+      <input
+        id="password2"
+        class="input__input"
+        [ngClass]="{
+          error:
+            formgroup.errors?.['PasswordNoMatch'] &&
+            formgroup.controls.confirmPassword.touched,
+        }"
+        [type]="inputType2"
+        name="password2"
+        placeholder="Contraseña"
+        formControlName="confirmPassword" />
+      @if (
+        formgroup.errors?.['PasswordNoMatch'] &&
+        formgroup.controls.confirmPassword.touched
+      ) {
+        <span class="message">Las contraseñas deben ser iguales</span>
+      }
     </div>
     <div class="flex">
-      <a routerLink="/login" class="text">¿Ya tienes cuenta? <br><span> Iniciar sesión</span> </a>
+      <a routerLink="/login" class="text"
+        >¿Ya tienes cuenta? <br /><span> Iniciar sesión</span>
+      </a>
 
       <app-button
         children="Registrar cuenta"
         size="large"
         color="primary"
+        [disabled]="formgroup.invalid"
         [isLoading]="isLoading" />
     </div>
   </form>

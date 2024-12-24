@@ -12,7 +12,10 @@
     </div>
     <div class="cards">
       @for (data of dataCardMain; track $index) {
-        <app-card [data]="data" />
+        <app-card
+          [data]="data"
+          [value]="total[$index]"
+          [isLoading]="isLoading" />
       }
     </div>
     <div class="table">

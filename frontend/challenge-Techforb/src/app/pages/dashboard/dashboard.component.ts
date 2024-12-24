@@ -6,6 +6,8 @@ import {
 import { TableComponent } from '../../components/dashboard/table/table.component';
 import { SidebarComponent } from '../../components/dashboard/sidebar/sidebar.component';
 import { CookieService } from 'ngx-cookie-service';
+import { DataService } from '../../services/data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,36 +18,59 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class DashboardComponent implements OnInit {
   private readonly _cookies = inject(CookieService);
+  private readonly _dataService = inject(DataService);
+  private readonly _toast = inject(ToastrService);
   userName = '';
+  total: number[] = [];
+  isLoading = false;
 
   ngOnInit(): void {
     this.userName = this._cookies.get('fullname');
+    this.LoadInfo();
+    this._dataService.emitChange.subscribe(() => this.LoadInfo());
   }
+
+  LoadInfo = () => {
+    this.isLoading = true;
+    this._dataService
+      .GetTotals()
+      .subscribe({
+        next: data => {
+          const newTotal = [];
+          newTotal.push(data.readings);
+          newTotal.push(data.midAlerts);
+          newTotal.push(data.redAlerts);
+          newTotal.push(data.disabled);
+          this.total = newTotal;
+        },
+        error: () =>
+          this._toast.error('Ha ocurrido un error al cargar los datos'),
+      })
+      .add(() => {
+        this.isLoading = false;
+      });
+  };
 
   dataCardMain: CardData[] = [
     {
       title: 'Lecturas Ok',
       mainIcon: '/assets/icons/checkIconMain.svg',
       size: 'large',
-      value: 1234,
     },
     {
       title: 'Alertas medias',
       mainIcon: '/assets/icons/midIconMain.svg',
       size: 'large',
-      value: 1234,
     },
     {
       title: 'Alertas rojas',
       mainIcon: '/assets/icons/redIconMain.svg',
       size: 'large',
-      value: 1234,
     },
     {
       title: 'Sensores deshabilitados',
       mainIcon: '/assets/icons/disabledIconMain.svg',
       size: 'large',
-      value: 1234,
     },
   ];
 
@@ -55,9 +80,9 @@ export class DashboardComponent implements OnInit {
       mainIcon: '/assets/icons/temperatureIcon.svg',
       size: 'small',
       info: {
-        ok: 123,
-        mid: 456,
-        red: 789,
+        ok: Math.floor(Math.random() * 200),
+        mid: Math.floor(Math.random() * 200),
+        red: Math.floor(Math.random() * 200),
       },
     },
     {
@@ -65,9 +90,9 @@ export class DashboardComponent implements OnInit {
       mainIcon: '/assets/icons/presureIcon.svg',
       size: 'small',
       info: {
-        ok: 123,
-        mid: 456,
-        red: 789,
+        ok: Math.floor(Math.random() * 200),
+        mid: Math.floor(Math.random() * 200),
+        red: Math.floor(Math.random() * 200),
       },
     },
     {
@@ -75,9 +100,9 @@ export class DashboardComponent implements OnInit {
       mainIcon: '/assets/icons/windIcon.svg',
       size: 'small',
       info: {
-        ok: 123,
-        mid: 456,
-        red: 789,
+        ok: Math.floor(Math.random() * 200),
+        mid: Math.floor(Math.random() * 200),
+        red: Math.floor(Math.random() * 200),
       },
     },
     {
@@ -85,9 +110,9 @@ export class DashboardComponent implements OnInit {
       mainIcon: '/assets/icons/levelIcon.svg',
       size: 'small',
       info: {
-        ok: 123,
-        mid: 456,
-        red: 789,
+        ok: Math.floor(Math.random() * 200),
+        mid: Math.floor(Math.random() * 200),
+        red: Math.floor(Math.random() * 200),
       },
     },
     {
@@ -95,9 +120,9 @@ export class DashboardComponent implements OnInit {
       mainIcon: '/assets/icons/energyIcon.svg',
       size: 'small',
       info: {
-        ok: 123,
-        mid: 456,
-        red: 789,
+        ok: Math.floor(Math.random() * 200),
+        mid: Math.floor(Math.random() * 200),
+        red: Math.floor(Math.random() * 200),
       },
     },
     {
@@ -105,9 +130,9 @@ export class DashboardComponent implements OnInit {
       mainIcon: '/assets/icons/tensionIcon.svg',
       size: 'small',
       info: {
-        ok: 123,
-        mid: 456,
-        red: 789,
+        ok: Math.floor(Math.random() * 200),
+        mid: Math.floor(Math.random() * 200),
+        red: Math.floor(Math.random() * 200),
       },
     },
     {
@@ -115,9 +140,9 @@ export class DashboardComponent implements OnInit {
       mainIcon: '/assets/icons/COIcon.svg',
       size: 'small',
       info: {
-        ok: 123,
-        mid: 456,
-        red: 789,
+        ok: Math.floor(Math.random() * 200),
+        mid: Math.floor(Math.random() * 200),
+        red: Math.floor(Math.random() * 200),
       },
     },
     {
@@ -125,9 +150,9 @@ export class DashboardComponent implements OnInit {
       mainIcon: '/assets/icons/gasIcon.svg',
       size: 'small',
       info: {
-        ok: 123,
-        mid: 456,
-        red: 789,
+        ok: Math.floor(Math.random() * 200),
+        mid: Math.floor(Math.random() * 200),
+        red: Math.floor(Math.random() * 200),
       },
     },
   ];

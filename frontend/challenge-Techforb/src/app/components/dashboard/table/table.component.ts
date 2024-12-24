@@ -18,19 +18,29 @@ export class TableComponent implements OnInit {
 
   plantsData: PlantData[] = [];
   isLoading = false;
+  currentPage = 0;
+  pages = 1;
+  firstPage = true;
+  lastPage = true;
 
   ngOnInit(): void {
-    this.LoadInfo();
-    this._dataService.emitChange.subscribe(() => this.LoadInfo());
+    this.LoadInfoPages(0);
+    this._dataService.emitChange.subscribe(() => {
+      this.LoadInfoPages(0);
+      this.currentPage = 0;
+    });
   }
 
-  LoadInfo = () => {
+  LoadInfoPages = (page: number) => {
     this.isLoading = true;
     this._dataService
-      .GetPlants()
+      .GetAllWithPages(page)
       .subscribe({
         next: data => {
-          this.plantsData = data;
+          this.plantsData = data.content;
+          this.firstPage = data.first;
+          this.lastPage = data.last;
+          this.pages = data.totalPages;
         },
         error: () =>
           this._toast.error('Ha ocurrido un error al cargar los datos'),
@@ -49,5 +59,15 @@ export class TableComponent implements OnInit {
 
   handleCloseModal = () => {
     this.openModal = false;
+  };
+
+  nextPage = () => {
+    this.currentPage++;
+    this.LoadInfoPages(this.currentPage);
+  };
+
+  previousPage = () => {
+    this.currentPage--;
+    this.LoadInfoPages(this.currentPage);
   };
 }
