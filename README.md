@@ -4,7 +4,7 @@
 ## Aplicación web realizada con:
 
 - **Frontend**: Angular 18
-- **Backend**: Java 17
+- **Backend**: Java 17 (Spring Boot)
 - **Base de datos**: MySQL
 - **Otros**: Docker
 
