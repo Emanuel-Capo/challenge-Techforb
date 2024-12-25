@@ -1,14 +1,23 @@
 <div class="container">
-  <app-sidebar />
+  <div class="side" [ngClass]="{ 'side-visible': sideBar }">
+    <app-sidebar />
+  </div>
   <div class="main">
     <div class="head">
       <h3 class="head__title">Monitoreo global</h3>
       <div class="head__user">
-        <img src="/assets/icons/languageIcon.svg" alt="" />
-        <img src="/assets/icons/configIcon.svg" alt="" />
-        <img src="/assets/icons/notificationIcon.svg" alt="" />
+        <div class="items">
+          <img src="/assets/icons/languageIcon.svg" alt="" />
+          <img src="/assets/icons/configIcon.svg" alt="" />
+          <img src="/assets/icons/notificationIcon.svg" alt="" />
+        </div>
         <p>{{ userName }}</p>
       </div>
+      <img
+        class="menu"
+        src="/assets/icons/hamburger.svg"
+        alt=""
+        (click)="toggleSide()" />
     </div>
     <div class="cards">
       @for (data of dataCardMain; track $index) {

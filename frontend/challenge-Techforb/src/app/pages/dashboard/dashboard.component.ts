@@ -8,11 +8,12 @@ import { SidebarComponent } from '../../components/dashboard/sidebar/sidebar.com
 import { CookieService } from 'ngx-cookie-service';
 import { DataService } from '../../services/data.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CardComponent, TableComponent, SidebarComponent],
+  imports: [CardComponent, TableComponent, SidebarComponent, NgClass],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -49,6 +50,12 @@ export class DashboardComponent implements OnInit {
       .add(() => {
         this.isLoading = false;
       });
+  };
+
+  sideBar = false;
+
+  toggleSide = () => {
+    this.sideBar = !this.sideBar;
   };
 
   dataCardMain: CardData[] = [

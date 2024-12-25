@@ -3,6 +3,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
 import { RegisterComponent } from './components/register/register.component';
+import { permissionGuard } from './guards/permission.guard';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,8 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [permissionGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login' },
 ];

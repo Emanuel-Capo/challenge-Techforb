@@ -2,29 +2,50 @@
   display: flex;
   position: relative;
   width: 100vw;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 
   &__bg{
     background: linear-gradient(#33A3AA,#107076);
-    height: 100vh;
-    width: 55%;
     position: absolute;
+    min-height: 70vh;
     opacity: 85%;
+    width: 100%;
+
+    @media (min-width: 768px) {
+      height: 100vh;
+      width: 55%;
+    }
   }
 
   &__left{
-    height: 100vh;
-    width: 55%;
+    width: 100%;
+    min-height: 70vh;
     background-image: url('/assets/loginImage.png');
+
+    @media (min-width: 768px) {
+      height: 100vh;
+      width: 55%;
+    }
   }
 
   &__right{
-    display: flex;
-    justify-content: center;
-    width:calc(45% + 32px);
-    border-radius: 32px 0 0 32px;
-    background-color: #FBFCFC;
-    margin-left: -32px;
-    z-index: 10;
+    width: 100vw;
+    padding: 15px;
+
+    @media (min-width: 768px) {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      width:calc(45% + 32px);
+      border-radius: 32px 0 0 32px;
+      background-color: #FBFCFC;
+      margin-left: -32px;
+      z-index: 10;
+    }
   }
 }
 

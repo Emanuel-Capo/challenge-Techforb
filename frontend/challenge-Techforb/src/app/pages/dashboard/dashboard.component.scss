@@ -1,21 +1,45 @@
 .container{
   display: flex;
   min-height: 100vh;
+  width: 100vw;
   background-color: #E9F1F4;
+
+  .side{
+    visibility: hidden;
+
+    @media (min-width: 640px) {
+      visibility: visible;
+    }
+  }
+
+  .side-visible{
+      visibility: visible;
+  }
 
   .main{
     width: 100%;
-    max-width: 1380px;
-    padding: 30px 40px 30px 110px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 
+    @media (min-width: 640px) {
+      padding: 30px 40px 30px 110px;
+      max-width: 1380px;
+
+    }
+
     .head{
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       width: 100%;
+      flex-direction: column;
+      position: relative;
+
+      @media (min-width: 640px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
 
       &__title{
         font-size: 30px;
@@ -28,8 +52,21 @@
         gap: 15px;
         align-items: center;
 
-        img{
-          height: 20px;
+        .items{
+          display: flex;
+          gap: 15px;
+          align-items: center;
+          visibility: hidden;
+          width: 0;
+
+          @media (min-width: 640px) {
+            width: 90px;
+            visibility: visible;
+          }
+
+          img{
+            height: 20px;
+          }
         }
 
         p{
@@ -38,6 +75,21 @@
           line-height: 27px;
         }
       }
+
+      .menu{
+        position: absolute;
+        height: 30px;
+        top: 10px;
+        right: 10px;
+
+        @media (min-width: 640px) {
+          visibility: hidden;
+        }
+      }
+    }
+
+    .table{
+      width: 100%;
     }
 
     .cards{

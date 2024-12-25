@@ -8,21 +8,37 @@
 }
 
 .btn-large{
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  width: 120px;
+  height: 40px;
+
+  @media (min-width: 1024px) {
+  font-size: 14px;
+  line-height: 21px;
   width: 164px;
   height: 48px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
+  }
 }
 
 .btn-small{
-  width: 100px;
-  height: 36px;
+  width: 80px;
+  height: 30px;
   border-radius: 5px;
-  font-size: 14px;
   font-weight: 500;
-  line-height: 21px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+
+  @media (min-width: 640px) {
+    width: 100px;
+    height: 36px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
 }
 
 .btn-primary{

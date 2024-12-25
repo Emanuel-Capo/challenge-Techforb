@@ -1,4 +1,4 @@
-<td>
+<td class="md-td">
   <img
     class="flag"
     src="{{ 'https://flagcdn.com/w40/' + data().countryCode + '.png' }}"
@@ -7,7 +7,21 @@
     [alt]="data().country" />
   {{ data().country }}
 </td>
-<td>{{ data().plant }}</td>
+<td class="md-td">{{ data().plant }}</td>
+<td class="sm-td">
+  <div class="plant">
+    <div>
+      <img
+        class="flag"
+        src="{{ 'https://flagcdn.com/w40/' + data().countryCode + '.png' }}"
+        width="18"
+        height="12"
+        [alt]="data().country" />
+      {{ data().country.slice(0, 3) }}
+    </div>
+    {{ data().plant.slice(0, 11) }}
+  </div>
+</td>
 <td>{{ data().readings }}</td>
 <td>{{ data().midAlerts }}</td>
 <td>{{ data().redAlerts }}</td>

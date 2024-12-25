@@ -8,13 +8,26 @@
   <hr />
   <table class="table">
     <thead class="table__head">
-      <tr>
+      <tr class="md-head">
         <th>País</th>
         <th>Nombre de la planta</th>
         <th>Lecturas</th>
         <th>Alertas medias</th>
         <th>Alertas rojas</th>
         <th class="actions">Acciones</th>
+      </tr>
+      <tr class="sm-head">
+        <th class="first">Planta</th>
+        <th>
+          <img src="/assets/icons/checkIcon.svg" alt="" class="data__icon" />
+        </th>
+        <th>
+          <img src="/assets/icons/midIcon.svg" alt="" class="data__icon" />
+        </th>
+        <th>
+          <img src="/assets/icons/redIcon.svg" alt="" class="data__icon" />
+        </th>
+        <th class="sm-actions">Acciones</th>
       </tr>
     </thead>
     @if (!isLoading) {
@@ -26,12 +39,20 @@
     }
   </table>
   @if (!isLoading) {
-  <div class="pagination">
-    @if (!firstPage) {<button (click)="previousPage()"><img class="arrowLeft" src="/assets/icons/selectIcon.svg" alt="" /></button>}
-    <span>Página {{currentPage+1}} de {{pages}}</span>
-    @if (!lastPage) {<button (click)="nextPage()"><img class="arrowRight" src="/assets/icons/selectIcon.svg" alt="" /></button>}
-  </div>
-}
+    <div class="pagination">
+      @if (!firstPage) {
+        <button (click)="previousPage()">
+          <img class="arrowLeft" src="/assets/icons/selectIcon.svg" alt="" />
+        </button>
+      }
+      <span>Página {{ currentPage + 1 }} de {{ pages }}</span>
+      @if (!lastPage) {
+        <button (click)="nextPage()">
+          <img class="arrowRight" src="/assets/icons/selectIcon.svg" alt="" />
+        </button>
+      }
+    </div>
+  }
   @if (isLoading) {
     <span class="loader"></span>
   }
